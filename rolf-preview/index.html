@@ -1,32 +1,116 @@
 <!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#000"><title>ROLF — Interactive Concept · Blocks 1–3</title><style>
-*{box-sizing:border-box}html,body{margin:0;background:#000;color:#fff;font-family:"DINPro","Arial Narrow","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}html{scroll-behavior:auto}a{color:inherit;text-decoration:none}a:hover{opacity:.8}button{font:inherit} :root{--pad:clamp(20px,5.56vw,80px)}.container{padding-left:var(--pad);padding-right:var(--pad)}
+*{box-sizing:border-box}html,body{margin:0;background:#000;color:#fff;font-family:"DINPro","Arial Narrow","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}html{scroll-behavior:auto}body{overflow-x:hidden}a{color:inherit;text-decoration:none}a:hover{opacity:.8}button{font:inherit}:root{--pad:clamp(20px,5.56vw,80px)}.container{padding-left:var(--pad);padding-right:var(--pad)}
 .hero{height:100svh;min-height:590px;position:sticky;top:0;overflow:hidden;z-index:0;background:#000}.hero-bg{position:absolute;right:0;top:0;width:96.3%;height:100%;object-fit:cover}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.24),transparent 75%);pointer-events:none}
 header{height:120px;position:relative;z-index:3;padding-top:20px}.head-top{display:flex;justify-content:space-between;align-items:end;height:24px}.logo{width:96px;height:24px;object-fit:contain}.contacts{display:flex;gap:40px;font-size:12px;align-items:center}.lang{opacity:.75}.lang b{font-weight:400;border-bottom:1px solid #dfbf67;color:#f4d56a}nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #777;margin-top:22px;padding-top:12px;font-size:12px}.menu-links{display:flex;gap:24px}.selection{background:#dec66e;color:#030303;padding:5px 13px}.mobile-menu{display:none;border:0;background:none;color:#fff;font-size:22px}
 .hero-copy{position:absolute;left:0;bottom:80px;z-index:2}.hero h1{font-size:40px;line-height:1.1;font-weight:400;margin:0 0 12px}.hero p{font-size:14px;line-height:1.35;max-width:602px;color:#aaa;margin:0}.links{display:flex;gap:40px;font-size:14px;margin-top:40px}.links a{display:inline-flex;gap:10px}
-.activities{height:calc(100svh + 380vh);position:relative;z-index:4;background:#000}.pin{height:100svh;min-height:590px;position:sticky;top:0;background:#000;overflow:hidden}.pin-content{height:100%;position:relative}.copy{position:absolute;z-index:2;left:var(--pad);top:10.25%;width:min(560px,42vw)}.copy h2{margin:0 0 20px;font-size:40px;line-height:1.22;font-weight:300;opacity:0;transform:translateX(-22px)}.copy .desc{font-size:14px;line-height:1.25;color:#dfdfdf}.copy .desc p{margin:0 0 12px}.copy .line{display:block;opacity:0;transform:translateY(7px)}.oil{position:absolute;pointer-events:none;right:0;top:17%;width:72%;height:68%}.oil img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;will-change:opacity,transform}
-.progress{position:absolute;left:var(--pad);right:var(--pad);bottom:10.25%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.segment{min-width:0;display:block}.track{display:block;background:rgba(255,255,255,.24);height:2px;overflow:hidden}.fill{display:block;width:0;height:100%;background:#fff}.caption{display:block;font-size:14px;color:#ddd;margin-top:14px}
-.advantages{background:#000;min-height:650px;height:100svh;position:relative;z-index:4}.cards{position:absolute;left:0;bottom:80px;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:52px}.card{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}.advantages.seen .card{opacity:1;transform:translateY(0)}.card:nth-child(2){transition-delay:.13s}.card:nth-child(3){transition-delay:.26s}.card:nth-child(4){transition-delay:.39s}.card small{color:#888;font-size:14px}.card h3{font-size:24px;line-height:1.2;font-weight:300;margin:12px 0 32px;min-height:62px}.card p{font-size:14px;line-height:1.35;color:#929292;max-width:270px;margin:0}
+.activities{height:calc(100svh + 380vh);position:relative;z-index:4;background:#000}.pin{height:100svh;min-height:590px;position:sticky;top:0;background:#000;overflow:hidden}.pin-content{height:100%;position:relative}.copy{position:absolute;z-index:2;left:var(--pad);top:10.25%;width:min(560px,42vw)}.copy h2{margin:0 0 20px;font-size:40px;line-height:1.22;font-weight:300;opacity:0;transform:translateX(-22px);transition:opacity .62s ease,transform .62s ease}.copy .desc{font-size:14px;line-height:1.25;color:#dfdfdf}.copy .desc p{margin:0 0 12px}.copy .line{display:block;opacity:0;transform:translateY(8px);transition:opacity .48s ease,transform .48s ease}.activities.intro-ready .copy h2{opacity:1;transform:translateX(0)}.activities.intro-ready .copy .line{opacity:1;transform:translateY(0)}.copy.is-swapping h2,.copy.is-swapping .line{opacity:0!important;transform:translateX(-16px)!important;transition-delay:0s!important}
+.oil{position:absolute;pointer-events:none;right:0;top:17%;width:72%;height:68%}.oil img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:translateY(10px) scale(.975);transition:opacity .85s ease,transform 1s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}.oil img.active{opacity:1;transform:translateY(0) scale(1)}
+.progress{position:absolute;left:var(--pad);right:var(--pad);bottom:10.25%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}.activities.entered .progress{opacity:1;transform:translateY(0)}.segment{min-width:0;display:block}.track{display:block;background:rgba(255,255,255,.24);height:2px;overflow:hidden;transform:scaleX(0);transform-origin:left;transition:transform .65s cubic-bezier(.2,.7,.2,1)}.activities.entered .track{transform:scaleX(1)}.fill{display:block;width:0;height:100%;background:#fff;transition:width .08s linear}.caption{display:block;font-size:14px;color:#ddd;margin-top:14px;opacity:0;transform:translateY(7px);transition:opacity .45s ease,transform .45s ease}.activities.entered .caption{opacity:1;transform:translateY(0);transition-delay:.42s}
+.advantages{background:#000;min-height:650px;height:100svh;position:relative;z-index:4}.cards{position:absolute;left:0;bottom:80px;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:52px}.card{min-width:0}.card-heading{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.advantages.seen .card-heading{opacity:1;transform:translateX(0)}.card:nth-child(2) .card-heading{transition-delay:.12s}.card:nth-child(3) .card-heading{transition-delay:.24s}.card:nth-child(4) .card-heading{transition-delay:.36s}.card small{color:#888;font-size:14px}.card h3{font-size:24px;line-height:1.2;font-weight:300;margin:12px 0 32px;min-height:62px}.card p{font-size:14px;line-height:1.35;color:#929292;max-width:270px;margin:0}.card .card-line{display:block;opacity:0;transform:translateY(9px);transition:opacity .52s ease,transform .52s ease}.advantages.seen .card .card-line{opacity:1;transform:translateY(0)}
 @media(max-width:900px){.menu-links{gap:12px}.contacts{gap:15px}.copy h2{font-size:33px}.oil{right:-5%;width:77%}.cards{gap:20px}.card h3{font-size:20px}}
 @media(max-width:700px){.hero-bg{width:145%;right:-44%;object-position:60% center}.shade{background:linear-gradient(to bottom,rgba(0,0,0,.4),transparent 45%,rgba(0,0,0,.48) 75%,#000)}header{height:75px}.contacts{display:none}.mobile-menu{display:block}nav{display:none;position:absolute;top:65px;left:20px;right:20px;background:#070707;border:1px solid #444;margin:0;padding:20px;gap:20px;align-items:start;flex-direction:column}.menu-links{display:flex;flex-direction:column;gap:15px}nav.open{display:flex}.hero-copy{bottom:45px}.hero h1{font-size:clamp(27px,7vw,36px)}.hero p{font-size:12px;max-width:390px}.links{font-size:13px;margin-top:25px;gap:30px}.activities{height:calc(100svh + 380vh)}.copy{top:8%;width:calc(100% - 40px)}.copy h2{font-size:clamp(25px,7vw,34px)}.copy .desc{font-size:12px;line-height:1.23;max-width:460px}.oil{top:44%;height:38%;width:100%;right:0}.progress{bottom:6.5%}.caption{font-size:10px;margin-top:11px}.advantages{height:auto;min-height:760px;padding:90px 0 65px}.cards{position:relative;bottom:auto;grid-template-columns:repeat(2,minmax(0,1fr));gap:45px 20px}.card h3{font-size:20px;margin:10px 0 20px;min-height:50px}.card p,.card small{font-size:12px}}
 @media(max-width:420px){.oil{top:46%;height:34%}.advantages{padding:70px 0}.cards{grid-template-columns:1fr;gap:40px}.card h3{min-height:0;margin-bottom:12px}}
-@media(prefers-reduced-motion:reduce){.card{transition:none}}
+@media(prefers-reduced-motion:reduce){.copy h2,.copy .line,.oil img,.progress,.track,.caption,.card-heading,.card .card-line{transition:none!important;animation:none!important}}
 </style></head><body><main>
 <section class="hero" id="hero"><img class="hero-bg" src="assets/hero.png" alt="ROLF motor oil product"><div class="shade"></div>
 <header class="container"><div class="head-top"><a href="#hero"><img class="logo" src="assets/logo.png" alt="ROLF"></a><div class="contacts"><a href="mailto:contact@rolfoil.de">contact@rolfoil.de</a><a href="tel:+494074060861">+49 (40) 7406 0861</a><span class="lang"><b>EN</b> / DE</span></div><button class="mobile-menu" aria-expanded="false" aria-label="Navigation">☰</button></div>
 <nav id="nav"><div class="menu-links"><a href="https://rolfoil.de/unternehmen/">About us</a><a href="#activities">Main activities</a><a href="https://rolfoil.de/katalog/">Catalog</a><a href="https://rolfoil.de/approvals/">Approvals</a><a href="https://rolfoil.de/ultra/">Ultra</a><a href="https://rolfoil.de/aktuelles/">News</a><a href="https://rolfoil.de/kontakt/">Contacts</a></div><a class="selection" href="https://rolfoil.de/katalog/">Selection ◇</a></nav></header>
 <div class="hero-copy container"><h1>EINE NEUE ÄRA DER MOTORÖLE</h1><p>Das Zusammenspiel fortschrittlicher Technologien und moderner Formulierungen von Schmierstoffen und Kühlmitteln für ein breites Spektrum an Fahrzeugen und Spezialmaschinen.</p><div class="links"><a href="https://rolfoil.de/katalog/">Ölsortiment →</a><a href="https://rolfoil.de/kontakt/">Kontakt →</a></div></div></section>
-<section class="activities" id="activities"><div class="pin"><div class="pin-content container"><div class="copy"><h2 id="chapterTitle"></h2><div class="desc" id="chapterText"></div></div><div class="oil" aria-hidden="true"><img src="assets/oil-innovation.png"><img src="assets/oil-quality.png"><img src="assets/oil-production.png"><img src="assets/oil-support.png"></div><div class="progress"><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Innovation</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Qualität</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Produktion</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Support</span></div></div></div></div></section>
-<section class="advantages" id="advantages"><div class="cards container"><article class="card"><small>001</small><h3>Wissenschaftliche<br>Expertise</h3><p>Wissenschaftliches Know-how und langjährige Erfahrung bilden die Grundlage unserer Produktentwicklung.</p></article><article class="card"><small>002</small><h3>Neue Schmierstoff-<br>Rezepturen</h3><p>Moderne Rezepturen für zuverlässige Leistung und unterschiedliche Einsatzbedingungen.</p></article><article class="card"><small>003</small><h3>Labor- und<br>Feldprüfungen</h3><p>Jedes Produkt wird im Labor, auf Prüfständen und unter realen Bedingungen getestet.</p></article><article class="card"><small>004</small><h3>Praxisbewährte<br>Qualität</h3><p>Geprüfte Produkteigenschaften für Qualität und Zuverlässigkeit im täglichen Einsatz.</p></article></div></section>
-</main><script>
+<section class="activities" id="activities"><div class="pin"><div class="pin-content container"><div class="copy"><h2 id="chapterTitle"></h2><div class="desc" id="chapterText"></div></div><div class="oil" aria-hidden="true"><img class="active" src="assets/oil-innovation.png" alt=""><img src="assets/oil-quality.png" alt=""><img src="assets/oil-production.png" alt=""><img src="assets/oil-support.png" alt=""></div><div class="progress"><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Innovation</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Qualität</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Produktion</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Support</span></div></div></div></div></section>
+<section class="advantages" id="advantages"><div class="cards container"><article class="card"><div class="card-heading"><small>001</small><h3>Wissenschaftliche<br>Expertise</h3></div><p>Wissenschaftliches Know-how und langjährige Erfahrung bilden die Grundlage unserer Produktentwicklung.</p></article><article class="card"><div class="card-heading"><small>002</small><h3>Neue Schmierstoff-<br>Rezepturen</h3></div><p>Moderne Rezepturen für zuverlässige Leistung und unterschiedliche Einsatzbedingungen.</p></article><article class="card"><div class="card-heading"><small>003</small><h3>Labor- und<br>Feldprüfungen</h3></div><p>Jedes Produkt wird im Labor, auf Prüfständen und unter realen Bedingungen getestet.</p></article><article class="card"><div class="card-heading"><small>004</small><h3>Praxisbewährte<br>Qualität</h3></div><p>Geprüfte Produkteigenschaften für Qualität und Zuverlässigkeit im täglichen Einsatz.</p></article></div></section>
+</main><script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+<script>
+
 const data=[
 ['QUALITÄT OHNE KOMPROMISSE','ROLF Lubricants GmbH: Innovation und Expertise in der Entwicklung von Hochleistungs-Schmierstoffe Die ROLF Lubricants GmbH nutzt das vorhandene wissenschaftliche und technische Potenzial und stützt sich bei der Entwicklung von Schmierstoffen auf umfangreiche Erfahrungen, um neue Rezepturen von Ölen und Kühlmitteln zu entwickeln. Jedes der neuen Produkte durchläuft mehrere Testzyklen: das Labor, die Standprüfungen (Verbrennungsmotoren, Getriebe) sowie Feldprüfungen (unter realen Betriebsbedingungen).'],
 ['UNSER QUALITÄTSVERSPRECHEN','Das Unternehmen beauftragt weltweit anerkannte Forschungs- und Prüfzentren, um die Qualität seiner Produkte zu sichern. Eines dieser Institute ist die ISP Salzbergen GmbH Co. KG (Salzbergen, Deutschland), das umfassende Tests von Schmierstoffen auf Laborgeräten sowie in Motoren und Getrieben verschiedener Typen durchführt. Auf diese Weise können wir Produkte entwickeln, die für den Einsatz von Fahrzeugen unter verschiedensten Bedingungen optimal geeignet sind. Die von unabhängigen Labors bestätigten Eigenschaften und Qualitäten der Schmier- und Kühlmittel erlauben es, sie für die Wartung von Maschinen sowohl während als auch nach der Garantiezeit zu verwenden.'],
 ['HIGHTECH-PRODUKTION, WELTWEITE LIEFERUNG','Die Produkte von ROLF Lubricants GmbH werden bei Verwendung von modernsten Produktionsanlagen in Zusammenarbeit mit der Firma UPEC hergestellt. Schmier- und Kühlmittel werden nach China, in die Mongolei, nach Vietnam, in eine Reihe von Ländern Afrikas, in den Nahen Osten, nach Zentralasien und in die GUS-Staaten geliefert.'],
 ['TECHNISCHER SUPPORT UND KUNDENNÄHE IM FOKUS','ROLF Lubricants GmbH: Innovation und Expertise in der Entwicklung von Hochleistungs-Schmierstoffe Die ROLF Lubricants GmbH nutzt das vorhandene wissenschaftliche und technische Potenzial und stützt sich bei der Entwicklung von Schmierstoffen auf umfangreiche Erfahrungen, um neue Rezepturen von Ölen und Kühlmitteln zu entwickeln. Jedes der neuen Produkte durchläuft mehrere Testzyklen: das Labor, die Standprüfungen (Verbrennungsmotoren, Getriebe) sowie Feldprüfungen (unter realen Betriebsbedingungen). Die ROLF Lubricants GmbH ist bestrebt, näher an ihre Kunden heranzutreten. Sie arbeitet am Ausbau ihres Händlernetzes und achtet sorgfältig darauf, dass ihre Produktversorgung stabil und ununterbrochen ist.']
 ];
-const sec=document.getElementById('activities'),tt=document.getElementById('chapterTitle'),desc=document.getElementById('chapterText'),imgs=[...document.querySelectorAll('.oil img')],fills=[...document.querySelectorAll('.fill')],adv=document.getElementById('advantages');let current=-1,lines=[],busy=false;
-const clamp=x=>Math.max(0,Math.min(1,x));const smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
-function setStage(i){if(current===i)return;current=i;tt.textContent=data[i][0];desc.innerHTML='';lines=[];const para=document.createElement('p');const cvs=document.createElement('canvas').getContext('2d');const st=getComputedStyle(desc);cvs.font=st.fontSize+' '+st.fontFamily;const max=desc.clientWidth-3;let buffer='';const push=()=>{if(!buffer)return;const el=document.createElement('span');el.className='line';el.textContent=buffer;para.appendChild(el);lines.push(el);buffer=''};data[i][1].split(/\s+/).forEach(w=>{let test=buffer?buffer+' '+w:w;if(buffer&&cvs.measureText(test).width>max)push();buffer=buffer?buffer+' '+w:w});push();para.setAttribute('aria-label',data[i][1]);desc.appendChild(para)}
-function render(){busy=false;const r=sec.getBoundingClientRect(),range=Math.max(1,sec.offsetHeight-innerHeight),p=clamp(-r.top/range),x=p*4,i=Math.min(3,Math.floor(x)),part=i===3?clamp(x-3):clamp(x-i),enter=r.top>0?0:clamp(p/.025);setStage(i);const ht=smooth((part-.015)/.16);tt.style.opacity=enter*ht;tt.style.transform='translateX('+(-22*(1-ht))+'px)';const n=lines.length;lines.forEach((el,j)=>{const a=smooth((part-(.09+j*Math.min(.023,.46/Math.max(1,n))))/.13);el.style.opacity=a*enter;el.style.transform='translateY('+(7*(1-a))+'px)'});fills.forEach((f,j)=>f.style.width=(clamp(x-j)*100)+'%');const oilStep=Math.max(0,Math.min(3,x-.12));imgs.forEach((img,j)=>{const opacity=j===0&&x<.12?1:clamp(1-Math.abs(oilStep-j));img.style.opacity=opacity*enter;img.style.transform='translateY('+((1-opacity)*8)+'px) scale('+(0.985+opacity*.015)+')'});if(adv.getBoundingClientRect().top<innerHeight*.8)adv.classList.add('seen')}
-function request(){if(!busy){busy=true;requestAnimationFrame(render)}}addEventListener('scroll',request,{passive:true});addEventListener('resize',()=>{current=-1;request()},{passive:true});const menu=document.querySelector('.mobile-menu');menu.addEventListener('click',()=>{let open=document.getElementById('nav').classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('#nav a').forEach(x=>x.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));setStage(0);request();
+const sec=document.getElementById('activities'),copy=document.querySelector('.copy'),tt=document.getElementById('chapterTitle'),desc=document.getElementById('chapterText'),imgs=[...document.querySelectorAll('.oil img')],fills=[...document.querySelectorAll('.fill')],adv=document.getElementById('advantages');
+let currentStage=-1,pendingStage=-1,swapTimer=null,entered=false,introReady=false,framePending=false,lenis=null;
+const clamp=x=>Math.max(0,Math.min(1,x));
+const smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
+function wrapText(text,container,spanClass,delayBase,delayStep){
+ const ctx=document.createElement('canvas').getContext('2d'),style=getComputedStyle(container);
+ ctx.font=style.fontWeight+' '+style.fontSize+' '+style.fontFamily;
+ const max=Math.max(30,container.clientWidth-3),words=text.split(/\s+/),lines=[];let line='';
+ words.forEach(word=>{const test=line?line+' '+word:word;if(line&&ctx.measureText(test).width>max){lines.push(line);line=word}else line=test});
+ if(line)lines.push(line);
+ container.innerHTML='';
+ lines.forEach((value,index)=>{const span=document.createElement('span');span.className=spanClass;span.textContent=value;span.style.transitionDelay=(delayBase+index*delayStep)+'s';container.appendChild(span)});
+ return lines;
+}
+function setStage(index){
+ currentStage=index;pendingStage=-1;tt.textContent=data[index][0];
+ wrapText(data[index][1],desc,'line',.16,.055);
+ imgs.forEach((img,i)=>img.classList.toggle('active',i===index));
+}
+function changeStage(index){
+ if(index===currentStage||index===pendingStage)return;
+ pendingStage=index;
+ copy.classList.add('is-swapping');
+ if(swapTimer)clearTimeout(swapTimer);
+ swapTimer=setTimeout(()=>{
+  setStage(index);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>copy.classList.remove('is-swapping')));
+ },260);
+}
+function revealActivity(){
+ if(entered||sec.getBoundingClientRect().top>1)return;
+ entered=true;sec.classList.add('entered');
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){introReady=true;sec.classList.add('intro-ready');return}
+ if(lenis)lenis.stop();else document.body.style.overflow='hidden';
+ setTimeout(()=>{
+  introReady=true;sec.classList.add('intro-ready');
+  if(lenis)lenis.start();else document.body.style.overflow='';
+  requestRender();
+ },1120);
+}
+function render(){
+ framePending=false;
+ revealActivity();
+ const range=Math.max(1,sec.offsetHeight-innerHeight);
+ const p=clamp((window.scrollY-sec.offsetTop)/range),x=p*4;
+ const stage=Math.min(3,Math.floor(x)),local=Math.max(0,x-stage);
+ const displayStage=(stage<3&&local>=.78)?stage+1:stage;
+ if(introReady)changeStage(displayStage);
+ fills.forEach((fill,index)=>{
+  let amount=0;
+  if(index<stage)amount=100;
+  else if(index===stage)amount=clamp(local/.78)*100;
+  fill.style.width=amount+'%';
+ });
+ if(adv.getBoundingClientRect().top<innerHeight*.82)adv.classList.add('seen');
+}
+function requestRender(){if(!framePending){framePending=true;requestAnimationFrame(render)}}
+function wrapCardDescriptions(){
+ document.querySelectorAll('.card p').forEach((p,cardIndex)=>{
+  const original=p.textContent.trim();
+  const lines=wrapText(original,p,'card-line',.18+cardIndex*.11,.075);
+  lines.forEach((_,lineIndex)=>{p.querySelectorAll('.card-line')[lineIndex].style.transitionDelay=(.2+cardIndex*.12+lineIndex*.075)+'s'});
+ });
+}
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.Lenis&&!reduced){
+ lenis=new window.Lenis({lerp:.085,smoothWheel:true,syncTouch:true,syncTouchLerp:.075,wheelMultiplier:.9,touchMultiplier:1});
+ const raf=time=>{lenis.raf(time);requestAnimationFrame(raf)};
+ requestAnimationFrame(raf);
+ lenis.on('scroll',requestRender);
+}
+document.querySelector('.mobile-menu').addEventListener('click',()=>{
+ const open=document.getElementById('nav').classList.toggle('open');
+ document.querySelector('.mobile-menu').setAttribute('aria-expanded',String(open));
+});
+document.querySelectorAll('#nav a').forEach(link=>link.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+wrapCardDescriptions();setStage(0);requestRender();
+window.addEventListener('scroll',requestRender,{passive:true});
+window.addEventListener('resize',()=>{
+ const stage=currentStage;wrapCardDescriptions();
+ if(stage>=0){setStage(stage);if(pendingStage>=0)changeStage(pendingStage)}
+ requestRender();
+},{passive:true});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)adv.classList.add('seen')}),{threshold:.12});
+observer.observe(adv);
+
 </script></body></html>
