@@ -1,9 +1,9 @@
-<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#000"><title>ROLF — Interactive Concept · Blocks 1–3</title><style>
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#000"><link rel="stylesheet" href="https://unpkg.com/lenis@1.3.28/dist/lenis.css"><title>ROLF — Interactive Concept · Blocks 1–3</title><style>
 *{box-sizing:border-box}html,body{margin:0;background:#000;color:#fff;font-family:"DINPro","Arial Narrow","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}html{scroll-behavior:auto}body{overflow-x:hidden}a{color:inherit;text-decoration:none}a:hover{opacity:.8}button{font:inherit}:root{--pad:clamp(20px,5.56vw,80px)}.container{padding-left:var(--pad);padding-right:var(--pad)}
 .hero{height:100svh;min-height:590px;position:sticky;top:0;overflow:hidden;z-index:0;background:#000}.hero-bg{position:absolute;right:0;top:0;width:96.3%;height:100%;object-fit:cover}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.24),transparent 75%);pointer-events:none}
 header{height:120px;position:relative;z-index:3;padding-top:20px}.head-top{display:flex;justify-content:space-between;align-items:end;height:24px}.logo{width:96px;height:24px;object-fit:contain}.contacts{display:flex;gap:40px;font-size:12px;align-items:center}.lang{opacity:.75}.lang b{font-weight:400;border-bottom:1px solid #dfbf67;color:#f4d56a}nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #777;margin-top:22px;padding-top:12px;font-size:12px}.menu-links{display:flex;gap:24px}.selection{background:#dec66e;color:#030303;padding:5px 13px}.mobile-menu{display:none;border:0;background:none;color:#fff;font-size:22px}
 .hero-copy{position:absolute;left:0;bottom:80px;z-index:2}.hero h1{font-size:40px;line-height:1.1;font-weight:400;margin:0 0 12px}.hero p{font-size:14px;line-height:1.35;max-width:602px;color:#aaa;margin:0}.links{display:flex;gap:40px;font-size:14px;margin-top:40px}.links a{display:inline-flex;gap:10px}
-.activities{height:calc(100svh + 380vh);position:relative;z-index:4;background:#000}.pin{height:100svh;min-height:590px;position:sticky;top:0;background:#000;overflow:hidden}.pin-content{height:100%;position:relative}.copy{position:absolute;z-index:2;left:var(--pad);top:10.25%;width:min(560px,42vw)}.copy h2{margin:0 0 20px;font-size:40px;line-height:1.22;font-weight:300;opacity:0;transform:translateX(-22px);transition:opacity .62s ease,transform .62s ease}.copy .desc{font-size:14px;line-height:1.25;color:#dfdfdf}.copy .desc p{margin:0 0 12px}.copy .line{display:block;opacity:0;transform:translateY(8px);transition:opacity .48s ease,transform .48s ease}.activities.intro-ready .copy h2{opacity:1;transform:translateX(0)}.activities.intro-ready .copy .line{opacity:1;transform:translateY(0)}.copy.is-swapping h2,.copy.is-swapping .line{opacity:0!important;transform:translateX(-16px)!important;transition-delay:0s!important}
+.activities{height:calc(100svh + 296.4vh);position:relative;z-index:4;background:#000}.pin{height:100svh;min-height:590px;position:sticky;top:0;background:#000;overflow:hidden}.pin-content{height:100%;position:relative}.copy{position:absolute;z-index:2;left:var(--pad);top:10.25%;width:min(560px,42vw)}.copy h2{margin:0 0 20px;font-size:40px;line-height:1.22;font-weight:300;opacity:0;transform:translateX(-22px);transition:opacity .62s ease,transform .62s ease}.copy .desc{font-size:14px;line-height:1.25;color:#dfdfdf}.copy .desc p{margin:0 0 12px}.copy .line{display:block;opacity:0;transform:translateY(8px);transition:opacity .48s ease,transform .48s ease}.activities.intro-ready .copy h2{opacity:1;transform:translateX(0)}.activities.intro-ready .copy .line{opacity:1;transform:translateY(0)}.copy.is-swapping h2,.copy.is-swapping .line{opacity:0!important;transform:translateX(-16px)!important;transition-delay:0s!important}
 .oil{position:absolute;pointer-events:none;right:0;top:17%;width:72%;height:68%}.oil img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:translateY(10px) scale(.975);transition:opacity .85s ease,transform 1s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}.oil img.active{opacity:1;transform:translateY(0) scale(1)}
 .progress{position:absolute;left:var(--pad);right:var(--pad);bottom:10.25%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}.activities.entered .progress{opacity:1;transform:translateY(0)}.segment{min-width:0;display:block}.track{display:block;background:rgba(255,255,255,.24);height:2px;overflow:hidden;transform:scaleX(0);transform-origin:left;transition:transform .65s cubic-bezier(.2,.7,.2,1)}.activities.entered .track{transform:scaleX(1)}.fill{display:block;width:0;height:100%;background:#fff;transition:width .08s linear}.caption{display:block;font-size:14px;color:#ddd;margin-top:14px;opacity:0;transform:translateY(7px);transition:opacity .45s ease,transform .45s ease}.activities.entered .caption{opacity:1;transform:translateY(0);transition-delay:.42s}
 .advantages{background:#000;min-height:650px;height:100svh;position:relative;z-index:4}.cards{position:absolute;left:0;bottom:80px;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:52px}.card{min-width:0}.card-heading{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.advantages.seen .card-heading{opacity:1;transform:translateX(0)}.card:nth-child(2) .card-heading{transition-delay:.12s}.card:nth-child(3) .card-heading{transition-delay:.24s}.card:nth-child(4) .card-heading{transition-delay:.36s}.card small{color:#888;font-size:14px}.card h3{font-size:24px;line-height:1.2;font-weight:300;margin:12px 0 32px;min-height:62px}.card p{font-size:14px;line-height:1.35;color:#929292;max-width:270px;margin:0}.card .card-line{display:block;opacity:0;transform:translateY(9px);transition:opacity .52s ease,transform .52s ease}.advantages.seen .card .card-line{opacity:1;transform:translateY(0)}
@@ -18,7 +18,7 @@ header{height:120px;position:relative;z-index:3;padding-top:20px}.head-top{displ
 <div class="hero-copy container"><h1>EINE NEUE ÄRA DER MOTORÖLE</h1><p>Das Zusammenspiel fortschrittlicher Technologien und moderner Formulierungen von Schmierstoffen und Kühlmitteln für ein breites Spektrum an Fahrzeugen und Spezialmaschinen.</p><div class="links"><a href="https://rolfoil.de/katalog/">Ölsortiment →</a><a href="https://rolfoil.de/kontakt/">Kontakt →</a></div></div></section>
 <section class="activities" id="activities"><div class="pin"><div class="pin-content container"><div class="copy"><h2 id="chapterTitle"></h2><div class="desc" id="chapterText"></div></div><div class="oil" aria-hidden="true"><img class="active" src="assets/oil-innovation.png" alt=""><img src="assets/oil-quality.png" alt=""><img src="assets/oil-production.png" alt=""><img src="assets/oil-support.png" alt=""></div><div class="progress"><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Innovation</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Qualität</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Produktion</span></div><div class="segment"><span class="track"><span class="fill"></span></span><span class="caption">Support</span></div></div></div></div></section>
 <section class="advantages" id="advantages"><div class="cards container"><article class="card"><div class="card-heading"><small>001</small><h3>Wissenschaftliche<br>Expertise</h3></div><p>Wissenschaftliches Know-how und langjährige Erfahrung bilden die Grundlage unserer Produktentwicklung.</p></article><article class="card"><div class="card-heading"><small>002</small><h3>Neue Schmierstoff-<br>Rezepturen</h3></div><p>Moderne Rezepturen für zuverlässige Leistung und unterschiedliche Einsatzbedingungen.</p></article><article class="card"><div class="card-heading"><small>003</small><h3>Labor- und<br>Feldprüfungen</h3></div><p>Jedes Produkt wird im Labor, auf Prüfständen und unter realen Bedingungen getestet.</p></article><article class="card"><div class="card-heading"><small>004</small><h3>Praxisbewährte<br>Qualität</h3></div><p>Geprüfte Produkteigenschaften für Qualität und Zuverlässigkeit im täglichen Einsatz.</p></article></div></section>
-</main><script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+</main><script src="https://unpkg.com/lenis@1.3.28/dist/lenis.min.js"></script>
 <script>
 
 const data=[
@@ -29,8 +29,15 @@ const data=[
 ];
 const sec=document.getElementById('activities'),copy=document.querySelector('.copy'),tt=document.getElementById('chapterTitle'),desc=document.getElementById('chapterText'),imgs=[...document.querySelectorAll('.oil img')],fills=[...document.querySelectorAll('.fill')],adv=document.getElementById('advantages');
 let currentStage=-1,pendingStage=-1,swapTimer=null,entered=false,introReady=false,framePending=false,lenis=null;
+let logicalStep=window.innerHeight*.95,fillRatio=.78,virtualOffset=0,nextHoldStage=0,holdActive=false,holdTimer=null;
 const clamp=x=>Math.max(0,Math.min(1,x));
-const smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
+function updateGeometry(){
+ logicalStep=window.innerHeight*.95;
+ sec.style.height=(window.innerHeight+4*logicalStep*fillRatio)+'px';
+}
+function logicalPosition(){
+ return (window.scrollY-sec.offsetTop+virtualOffset)/logicalStep;
+}
 function wrapText(text,container,spanClass,delayBase,delayStep){
  const ctx=document.createElement('canvas').getContext('2d'),style=getComputedStyle(container);
  ctx.font=style.fontWeight+' '+style.fontSize+' '+style.fontFamily;
@@ -48,37 +55,68 @@ function setStage(index){
 }
 function changeStage(index){
  if(index===currentStage||index===pendingStage)return;
- pendingStage=index;
- copy.classList.add('is-swapping');
+ pendingStage=index;copy.classList.add('is-swapping');
  if(swapTimer)clearTimeout(swapTimer);
  swapTimer=setTimeout(()=>{
   setStage(index);
   requestAnimationFrame(()=>requestAnimationFrame(()=>copy.classList.remove('is-swapping')));
  },260);
 }
+function lockScroll(){
+ if(lenis)lenis.stop();else document.body.style.overflow='hidden';
+}
+function unlockScroll(){
+ if(lenis)lenis.start();else document.body.style.overflow='';
+}
+function beginHold(stage){
+ if(holdActive)return;
+ holdActive=true;
+ const target=(stage+fillRatio)*logicalStep;
+ const current=window.scrollY-sec.offsetTop+virtualOffset;
+ virtualOffset+=target-current;
+ lockScroll();
+ if(stage<3)changeStage(stage+1);
+ requestRender();
+ holdTimer=setTimeout(()=>{
+  virtualOffset+=(1-fillRatio)*logicalStep;
+  nextHoldStage=stage+1;
+  holdActive=false;
+  unlockScroll();
+  requestRender();
+ },760);
+}
 function revealActivity(){
  if(entered||sec.getBoundingClientRect().top>1)return;
  entered=true;sec.classList.add('entered');
  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){introReady=true;sec.classList.add('intro-ready');return}
- if(lenis)lenis.stop();else document.body.style.overflow='hidden';
+ lockScroll();
  setTimeout(()=>{
   introReady=true;sec.classList.add('intro-ready');
-  if(lenis)lenis.start();else document.body.style.overflow='';
-  requestRender();
+  unlockScroll();requestRender();
  },1120);
 }
 function render(){
  framePending=false;
  revealActivity();
- const range=Math.max(1,sec.offsetHeight-innerHeight);
- const p=clamp((window.scrollY-sec.offsetTop)/range),x=p*4;
- const stage=Math.min(3,Math.floor(x)),local=Math.max(0,x-stage);
- const displayStage=(stage<3&&local>=.78)?stage+1:stage;
+ let x=logicalPosition();
+ if(!holdActive&&nextHoldStage>0){
+  let guard=0;
+  while(nextHoldStage>0&&x<nextHoldStage&&guard<4){
+   virtualOffset-=(1-fillRatio)*logicalStep;
+   nextHoldStage--;guard++;x=logicalPosition();
+  }
+ }
+ if(!holdActive&&nextHoldStage<4&&x>=nextHoldStage+fillRatio){
+  beginHold(nextHoldStage);x=logicalPosition();
+ }
+ const stage=Math.min(3,Math.max(0,Math.floor(x)));
+ const local=clamp(x-stage);
+ const displayStage=(stage<3&&local>=fillRatio)?stage+1:stage;
  if(introReady)changeStage(displayStage);
  fills.forEach((fill,index)=>{
   let amount=0;
   if(index<stage)amount=100;
-  else if(index===stage)amount=clamp(local/.78)*100;
+  else if(index===stage)amount=clamp(local/fillRatio)*100;
   fill.style.width=amount+'%';
  });
  if(adv.getBoundingClientRect().top<innerHeight*.82)adv.classList.add('seen');
@@ -87,13 +125,14 @@ function requestRender(){if(!framePending){framePending=true;requestAnimationFra
 function wrapCardDescriptions(){
  document.querySelectorAll('.card p').forEach((p,cardIndex)=>{
   const original=p.textContent.trim();
-  const lines=wrapText(original,p,'card-line',.18+cardIndex*.11,.075);
+  const lines=wrapText(original,p,'card-line',.2+cardIndex*.12,.075);
   lines.forEach((_,lineIndex)=>{p.querySelectorAll('.card-line')[lineIndex].style.transitionDelay=(.2+cardIndex*.12+lineIndex*.075)+'s'});
  });
 }
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+updateGeometry();
 if(window.Lenis&&!reduced){
- lenis=new window.Lenis({lerp:.085,smoothWheel:true,syncTouch:true,syncTouchLerp:.075,wheelMultiplier:.9,touchMultiplier:1});
+ lenis=new window.Lenis({lerp:.085,smoothWheel:true,syncTouch:true,syncTouchLerp:.075,wheelMultiplier:.9,touchMultiplier:1,anchors:true});
  const raf=time=>{lenis.raf(time);requestAnimationFrame(raf)};
  requestAnimationFrame(raf);
  lenis.on('scroll',requestRender);
@@ -106,7 +145,9 @@ document.querySelectorAll('#nav a').forEach(link=>link.addEventListener('click',
 wrapCardDescriptions();setStage(0);requestRender();
 window.addEventListener('scroll',requestRender,{passive:true});
 window.addEventListener('resize',()=>{
- const stage=currentStage;wrapCardDescriptions();
+ updateGeometry();
+ const stage=currentStage;
+ wrapCardDescriptions();
  if(stage>=0){setStage(stage);if(pendingStage>=0)changeStage(pendingStage)}
  requestRender();
 },{passive:true});
