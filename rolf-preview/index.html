@@ -172,9 +172,9 @@ function wrapCardDescriptions(){
    paragraph.dataset.originalText=paragraph.textContent.trim();
   }
   const original=paragraph.dataset.originalText;
-  const lines=wrapText(original,paragraph,'card-line',.48+cardIndex*.14,.075);
+  const lines=wrapText(original,paragraph,'card-line',.86+cardIndex*.14,.075);
   lines.forEach((_,lineIndex)=>{
-   paragraph.querySelectorAll('.card-line')[lineIndex].style.transitionDelay=(.48+cardIndex*.14+lineIndex*.075)+'s';
+   paragraph.querySelectorAll('.card-line')[lineIndex].style.transitionDelay=(.86+cardIndex*.14+lineIndex*.075)+'s';
   });
  });
 }
