@@ -134,7 +134,7 @@ function revealActivity(rect){
 }
 
 function getScrollState(rect){
- const scrolled=clamp(-rect.top,0,totalScrollDistance);
+ const scrolled=Math.max(0,Math.min(totalScrollDistance,-rect.top));
  if(scrolled<introBuffer){
   return {scrolled,stage:0,progress:0,displayStage:0};
  }
