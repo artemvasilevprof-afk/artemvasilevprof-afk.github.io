@@ -48,7 +48,7 @@ let introBuffer=120;
 let fillDistance=600;
 let holdDistance=150;
 let stageDistance=750;
-let totalScrollDistance=0;
+let totalScrollDistance=3120;
 
 const clamp=value=>Math.max(0,Math.min(1,value));
 
@@ -98,7 +98,16 @@ function setStage(index){
 }
 
 function changeStage(index){
- if(index===currentStage||index===pendingStage)return;
+ if(index===pendingStage)return;
+ if(index===currentStage){
+  if(pendingStage!==-1){
+   if(swapTimer)clearTimeout(swapTimer);
+   swapTimer=null;
+   pendingStage=-1;
+   copy.classList.remove('is-swapping');
+  }
+  return;
+ }
  pendingStage=index;
  copy.classList.add('is-swapping');
  if(swapTimer)clearTimeout(swapTimer);
@@ -108,8 +117,8 @@ function changeStage(index){
  },260);
 }
 
-function revealActivity(){
- if(entered||sec.getBoundingClientRect().top>1)return;
+function revealActivity(rect){
+ if(entered||rect.top>1)return;
  entered=true;
  sec.classList.add('entered');
  const reveal=()=>{
@@ -120,33 +129,47 @@ function revealActivity(){
  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   reveal();
  }else{
-  window.setTimeout(reveal,1180);
+  window.setTimeout(reveal,1050);
  }
 }
 
-function getScrollState(){
- const sectionTop=window.scrollY+sec.getBoundingClientRect().top;
- const y=clamp(window.scrollY-sectionTop,0,totalScrollDistance);
- const activityY=Math.max(0,y-introBuffer);
- const stage=Math.min(3,Math.floor(activityY/stageDistance));
- const local=activityY-stage*stageDistance;
- const progress=clamp(local/fillDistance);
- const displayStage=(stage<3&&local>=fillDistance)?stage+1:stage;
- return {y,stage,local,progress,displayStage};
+function getScrollState(rect){
+ const scrolled=clamp(-rect.top,0,totalScrollDistance);
+ if(scrolled<introBuffer){
+  return {scrolled,stage:0,progress:0,displayStage:0};
+ }
+ const timeline=scrolled-introBuffer;
+ for(let index=0;index<4;index++){
+  const start=index*stageDistance;
+  const fillEnd=start+fillDistance;
+  const stageEnd=start+stageDistance;
+  if(timeline<fillEnd){
+   return {
+    scrolled,
+    stage:index,
+    progress:clamp((timeline-start)/fillDistance),
+    displayStage:index
+   };
+  }
+  if(index<3&&timeline<stageEnd){
+   return {scrolled,stage:index,progress:1,displayStage:index+1};
+  }
+ }
+ return {scrolled,stage:3,progress:1,displayStage:3};
 }
 
-function checkAdvantages(){
- const rect=advantages.getBoundingClientRect();
- if(rect.top<window.innerHeight*.78&&rect.bottom>window.innerHeight*.08){
+function checkAdvantages(rect){
+ if(rect.top<window.innerHeight*.82&&rect.bottom>window.innerHeight*.08){
   advantages.classList.add('is-visible');
  }
 }
 
 function render(){
  framePending=false;
- revealActivity();
+ const sectionRect=sec.getBoundingClientRect();
+ revealActivity(sectionRect);
+ const state=getScrollState(sectionRect);
 
- const state=getScrollState();
  if(introReady)changeStage(state.displayStage);
 
  fills.forEach((fill,index)=>{
@@ -156,7 +179,7 @@ function render(){
   fill.style.width=amount+'%';
  });
 
- checkAdvantages();
+ checkAdvantages(advantages.getBoundingClientRect());
 }
 
 function requestRender(){
@@ -183,18 +206,23 @@ const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matche
 updateGeometry();
 
 if(window.Lenis&&!reducedMotion){
- lenis=new window.Lenis({
-  lerp:.085,
-  smoothWheel:true,
-  wheelMultiplier:.9,
-  anchors:true
- });
- const raf=time=>{
-  lenis.raf(time);
+ try{
+  lenis=new window.Lenis({
+   lerp:.085,
+   smoothWheel:true,
+   wheelMultiplier:.9,
+   anchors:true
+  });
+  const raf=time=>{
+   lenis.raf(time);
+   requestAnimationFrame(raf);
+  };
   requestAnimationFrame(raf);
- };
- requestAnimationFrame(raf);
- lenis.on('scroll',requestRender);
+  lenis.on('scroll',requestRender);
+ }catch(error){
+  lenis=null;
+  console.warn('Lenis unavailable; using native scrolling.',error);
+ }
 }
 
 document.querySelector('.mobile-menu').addEventListener('click',()=>{
@@ -216,12 +244,6 @@ window.addEventListener('resize',()=>{
  wrapCardDescriptions();
  requestRender();
 },{passive:true});
-
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting)advantages.classList.add('is-visible');
- });
-},{threshold:.08,rootMargin:'0px 0px -12% 0px'});
-observer.observe(advantages);
+window.addEventListener('pageshow',requestRender);
 
 </script></body></html>
